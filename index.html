@@ -512,7 +512,7 @@
                                         GDS:</label>
                                     <select id="gds-select" onchange="updateOfficeId()"
                                         style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; color: #333; outline: none;">
-                                        <option value="" disabled selected>Seleccione un proveedor...</option>
+                                        <option value="" disabled selected>Seleccione un GDS...</option>
                                         <option value="amadeus">AMADEUS</option>
                                         <option value="sabre">SABRE</option>
                                         <option value="galileo">GALILEO</option>
@@ -523,7 +523,7 @@
                                 <div style="margin-bottom: 20px; flex: 1; min-width: 200px;">
                                     <label
                                         style="font-weight: 500; color: #444; display: block; margin-bottom: 8px; font-size: 0.9em;">Office
-                                        ID:</label>
+                                        ID EMISOR:</label>
                                     <input type="text" id="office-id-display" readonly value=""
                                         style="width: 100%; padding: 10px; border: 1px solid #ddd; background-color: #f5f5f5; border-radius: 4px; font-size: 14px; color: #666; outline: none;"
                                         placeholder="-" />
@@ -545,7 +545,7 @@
                                 style="margin-bottom: 30px; padding: 12px 15px; background-color: #fff8e1; border-left: 4px solid #ffca28; border-radius: 4px; color: #b18200; font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 10px;">
                                 <i data-lucide="info" style="width: 18px; color: #ffca28; flex-shrink: 0;"></i>
                                 Recuerda antes de iniciar el proceso de registro de COMPARTIR LA RESPONSABILIDAD DEL
-                                PNR.
+                                PNR con el Office ID EMISOR.
                             </div>
 
                             <!-- Simulation Flow -->
@@ -616,33 +616,52 @@
 
                                     <!-- Step 1 -->
                                     <div class="sim-step" id="sim-step-1"
-                                        style="display: flex; align-items: flex-start; margin-bottom: 20px; position: relative; z-index: 2; opacity: 0.5;">
+                                        style="display: flex; align-items: flex-start; margin-bottom: 30px; position: relative; z-index: 2; opacity: 0.5;">
                                         <div class="step-icon"
                                             style="width: 24px; height: 24px; background: #ccc; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 15px; transition: all 0.3s; flex-shrink: 0;">
                                             1</div>
-                                        <div style="padding-top: 3px;">
+                                        <div style="padding-top: 3px; width: 100%;">
                                             <span
                                                 style="color: #555; font-weight: 500; font-size: 14px; display: block;">Recuperación
                                                 de datos</span>
                                             <span class="step-status"
-                                                style="font-size: 12px; color: #888; display: none;">Completado
+                                                style="font-size: 12px; color: #888; display: none; margin-bottom: 8px;">Completado
                                                 correctamente</span>
+                                            <div class="step-tooltip"
+                                                style="display: none; padding: 10px 15px; background: #e3f2fd; border-radius: 6px; border: 1px solid #bbdefb; color: #0d47a1; font-size: 12px; position: relative; max-width: 90%;">
+                                                <div
+                                                    style="position: absolute; top: -6px; left: 15px; width: 10px; height: 10px; background: #e3f2fd; border-top: 1px solid #bbdefb; border-left: 1px solid #bbdefb; transform: rotate(45deg);">
+                                                </div>
+                                                <strong style="vertical-align: middle;">Nota Dev:</strong> <span
+                                                    style="vertical-align: middle;">Transacción webservice de RETRIVE
+                                                    para recuperar todos los datos del PNR, nombres, vuelos, etc.</span>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <!-- Step 2 -->
                                     <div class="sim-step" id="sim-step-2"
-                                        style="display: flex; align-items: flex-start; margin-bottom: 20px; position: relative; z-index: 2; opacity: 0.5;">
+                                        style="display: flex; align-items: flex-start; margin-bottom: 30px; position: relative; z-index: 2; opacity: 0.5;">
                                         <div class="step-icon"
                                             style="width: 24px; height: 24px; background: #ccc; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 15px; transition: all 0.3s; flex-shrink: 0;">
                                             2</div>
-                                        <div style="padding-top: 3px;">
+                                        <div style="padding-top: 3px; width: 100%;">
                                             <span
                                                 style="color: #555; font-weight: 500; font-size: 14px; display: block;">Validar
                                                 cotización</span>
                                             <span class="step-status"
-                                                style="font-size: 12px; color: #888; display: none;">Cotización vigente
+                                                style="font-size: 12px; color: #888; display: none; margin-bottom: 8px;">Cotización
+                                                vigente
                                                 y validada</span>
+                                            <div class="step-tooltip"
+                                                style="display: none; padding: 10px 15px; background: #e3f2fd; border-radius: 6px; border: 1px solid #bbdefb; color: #0d47a1; font-size: 12px; position: relative; max-width: 90%;">
+                                                <div
+                                                    style="position: absolute; top: -6px; left: 15px; width: 10px; height: 10px; background: #e3f2fd; border-top: 1px solid #bbdefb; border-left: 1px solid #bbdefb; transform: rotate(45deg);">
+                                                </div>
+                                                <strong style="vertical-align: middle;">Nota Dev:</strong> <span
+                                                    style="vertical-align: middle;">Comprobar que la cotización es
+                                                    automática y que no ha sido manipulada.</span>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -652,13 +671,23 @@
                                         <div class="step-icon"
                                             style="width: 24px; height: 24px; background: #ccc; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 15px; transition: all 0.3s; flex-shrink: 0;">
                                             3</div>
-                                        <div style="padding-top: 3px;">
+                                        <div style="padding-top: 3px; width: 100%;">
                                             <span
                                                 style="color: #555; font-weight: 500; font-size: 14px; display: block;">Validar
                                                 forma de pago</span>
                                             <span class="step-status"
-                                                style="font-size: 12px; color: #888; display: none;">Medio de pago
+                                                style="font-size: 12px; color: #888; display: none; margin-bottom: 8px;">Medio
+                                                de pago
                                                 confirmado</span>
+                                            <div class="step-tooltip"
+                                                style="display: none; padding: 10px 15px; background: #e3f2fd; border-radius: 6px; border: 1px solid #bbdefb; color: #0d47a1; font-size: 12px; position: relative; max-width: 90%;">
+                                                <div
+                                                    style="position: absolute; top: -6px; left: 15px; width: 10px; height: 10px; background: #e3f2fd; border-top: 1px solid #bbdefb; border-left: 1px solid #bbdefb; transform: rotate(45deg);">
+                                                </div>
+                                                <strong style="vertical-align: middle;">Nota Dev:</strong> <span
+                                                    style="vertical-align: middle;">Comprobar que el rETRIVE incluye una
+                                                    Forma de Pago válida.</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -862,14 +891,27 @@
                                 <div style="flex: 1;">
                                     <span
                                         style="font-size: 12px; color: #666; display: block; margin-bottom: 5px;">TASAS
-                                        Y OTROS CARGOS</span>
+                                    </span>
                                     <span style="font-size: 18px; font-weight: bold; color: #333;">125.50 €</span>
+                                </div>
+                                <div style="font-size: 20px; color: #999;">+</div>
+                                <div style="flex: 1; position: relative;">
+                                    <span
+                                        style="font-size: 12px; color: #666; display: block; margin-bottom: 5px;">GASTOS
+                                        EMISIÓN
+                                    </span>
+                                    <span style="font-size: 18px; font-weight: bold; color: #333;">20.00 €</span>
+                                    <div
+                                        style="margin-top: 10px; padding: 6px 10px; background: #e3f2fd; border-radius: 4px; border: 1px solid #bbdefb; color: #0d47a1; font-size: 10px; line-height: 1.3;">
+                                        <strong>Nota Dev:</strong> Los gastos de emisión precargados dependerán del tipo
+                                        de ruta del PNR: DOMÉSTICO, CONTINENTAL O INTERCONTINENTAL.
+                                    </div>
                                 </div>
                                 <div style="font-size: 20px; color: #999;">=</div>
                                 <div
                                     style="flex: 1.5; background: #fff; padding: 10px 15px; border-radius: 6px; border: 1px solid #16a34a; display: flex; align-items: center; justify-content: space-between;">
                                     <span style="font-size: 13px; font-weight: bold; color: #16a34a;">TOTAL PNR</span>
-                                    <span style="font-size: 24px; font-weight: 900; color: #16a34a;">575.50 €</span>
+                                    <span style="font-size: 24px; font-weight: 900; color: #16a34a;">595.50 €</span>
                                 </div>
                             </div>
                         </div>
